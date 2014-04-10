@@ -16,9 +16,9 @@ var imageSelection = function(e) {
 			var photoTitle = e.toElement.alt;
 			console.log(photoTitle);
 			document.querySelector('div#art p').innerHTML = "<p>You've picked: "+photoTitle+"</p>";
-		}
-	}
-};
+		} // liNodes - tells us how many li nodes are in the scope of the gridNode
+	} // e.target.tagName
+}; // imageSelection - run if image clicked
 
 // listeners
 gridNode.addEventListener('click', imageSelection, false);
