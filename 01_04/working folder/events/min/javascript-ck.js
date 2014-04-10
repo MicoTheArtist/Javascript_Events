@@ -1,0 +1,1 @@
+document.getElementById("pink").addEventListener("click",function(e){},!1);

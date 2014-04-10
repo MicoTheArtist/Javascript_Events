@@ -1,0 +1,1 @@
+var theGridNode=document.querySelector("ul.grid");theGridNode.addEventListener("click",function(e){if("IMG"===e.target.tagName){console.log(e);var t=document.createElement("div");t.className="preview",myImgElement=document.createElement("img"),myImgElement.src="testing.jpg",t.appendChild(myImgElement)}},!1);
