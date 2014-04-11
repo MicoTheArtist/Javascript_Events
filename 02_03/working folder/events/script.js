@@ -8,21 +8,21 @@ theGridNode.addEventListener('mouseover', function(e) {
 		var myDivElement = document.createElement('div');
 		myDivElement.className = "preview";
 		
-		// append the div to the event images parent
+		// append the div to the event images parent li element
 		e.target.parentNode.appendChild(myDivElement);
 		
-			// img creationg
-			myNewImageElement = document.createElement('img');
-			
-			// img src creation
-			myOriginalImageSrc = e.target.src;
-			myNewImageElement.src = myOriginalImageSrc.substr(0, myOriginalImageSrc.length-7) + '.jpg';
-			
-			//console.log(myNewImageElement);
+		// img creation
+		myNewImageElement = document.createElement('img');
+		
+		// img src creation
+		myOriginalImageSrc = e.target.src;
+		myNewImageElement.src = myOriginalImageSrc.substr(0, myOriginalImageSrc.length-7) + '.jpg';
+		
+		//console.log(myNewImageElement);
 			
 		// append the img tag inside the div tag
 		myDivElement.appendChild(myNewImageElement);
 		
 		console.log(myDivElement);
-	}
-}, false);
+	} // e.target.tagName --- check to make sure an image is clicked
+}, false); // mouseover event

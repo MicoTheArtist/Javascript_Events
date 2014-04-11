@@ -1,20 +1,42 @@
-document.querySelector('.grid').addEventListener('mouseover', function(e) {
-  if (e.target.tagName === 'IMG') {
+// variables
+var greyNode = document.querySelector('ul.grid');
 
-    var myElement = document.createElement('div');
-    myElement.className = 'preview';
-    e.target.parentNode.appendChild(myElement);
+// functions
+var contextMenu = function(e) {
+	//console.log(e);
+	
+	// create the new DIV element
+	var myDiv = document.createElement('div');
+	myDiv.className = "preview";
+	e.target.parentNode.appendChild(myDiv);
+	
+	// create the new IMG element
+	var myImg = document.createElement('img');
+	originalImgSrc = e.target.src;
+	myImg.src = originalImgSrc.substr(0, originalImgSrc.length - 7) + ".jpg";
+	
+	// append the IMG to the DIV element
+	myDiv.appendChild(myImg);
+	
+	// offset the position of the DIV element about 15px Left and 15px Top	
+	myDiv.style.left = e.offsetX + 15 + 'px';
+	myDiv.style.top = e.offsetY + 15 + 'px';
+	
+	// on the 'mouseout' event remove the new DIV I added to the DOM
+	e.target.addEventListener('mouseout', function handler(d) {
+		var myOpenDiv = d.target.parentNode.querySelector('div.preview');
+		myOpenDiv.parentNode.removeChild(myOpenDiv);
+		d.target.removeEventListener('mouseout', handler, false);
+	}, false);
+	
+	// when the mouse is moved and while active have the offset div offset 
+	// with it about 15 px Left and 15 px Top
+	e.target.addEventListener('mousemove', function(f) {
+		console.log(f);
+		myDiv.style.left = f.offsetX + 15 + 'px';
+		myDiv.style.top = f.offsetY + 15 + 'px';
+	}, false);
+};
 
-    var myImg = document.createElement('img');
-    var imgLoc = e.target.src;
-    myImg.src = imgLoc.substr(0, imgLoc.length-7) + '.jpg';
-    myElement.appendChild(myImg);
-
-    e.target.addEventListener('mouseout', function handler(d) {
-      var myNode = d.target.parentNode.querySelector('div.preview');
-      myNode.parentNode.removeChild(myNode);
-      e.target.removeEventListener('mouseout', handler, false);
-    }, false);
-
-  } // check to see that I clicked on IMG only
-}, false); // click event
+// listeners
+greyNode.addEventListener('click', contextMenu, false);
