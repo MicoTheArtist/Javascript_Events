@@ -3,7 +3,6 @@ var greyNode = document.querySelector('ul.grid');
 
 // functions
 var contextMenu = function(e) {
-	//console.log(e);
 	
 	// create the new DIV element
 	var myDiv = document.createElement('div');
@@ -32,7 +31,6 @@ var contextMenu = function(e) {
 	// when the mouse is moved and while active have the offset div offset 
 	// with it about 15 px Left and 15 px Top
 	e.target.addEventListener('mousemove', function(f) {
-		console.log(f);
 		myDiv.style.left = f.offsetX + 15 + 'px';
 		myDiv.style.top = f.offsetY + 15 + 'px';
 	}, false);

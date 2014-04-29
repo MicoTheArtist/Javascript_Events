@@ -1,6 +1,8 @@
 document.querySelector('img.preview').addEventListener('click', function(e) {
   var lowRes = e.target.src;
+  
   var myOverlay = document.querySelector('.overlay');
+  
   var highRes = document.createElement('img');
   var mySpinner = document.createElement('img');
 
